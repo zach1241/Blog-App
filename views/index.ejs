@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Blog App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>MyBlogApp</header>
+
+    <div class="container">
+        <!-- New Post Form -->
+        <div class="post-form">
+            <form action="/posts" method="POST">
+                <input type="text" name="title" placeholder="What's happening?" required>
+                <textarea name="content" placeholder="Write your post..." required></textarea>
+                <button type="submit">Post</button>
+            </form>
+        </div>
+
+        <!-- Feed -->
+        <div class="feed">
+            <% if(posts.length === 0) { %>
+                <p style="text-align:center; color:#657786;">No posts yet. Be the first to post!</p>
+            <% } %>
+
+            <% posts.slice().reverse().forEach(post => { %>
+                <div class="post">
+                    <h2><%= post.title %></h2>
+                    <p><%= post.content %></p>
+                    <div class="post-controls">
+                        <a href="/posts/<%= post.id %>/edit">Edit</a>
+                        <form action="/posts/<%= post.id %>?_method=DELETE" method="POST" style="display:inline;">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</body>
+</html>
