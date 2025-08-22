@@ -3,19 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Post</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <header>MyBlogApp</header>
 
     <div class="container">
-        <form action="/posts/<%= post.id %>?_method=PUT" method="POST" class="post-form">
-            <input type="text" name="title" value="<%= post.title %>" required>
-            <textarea name="content" required><%= post.content %></textarea>
-            <button type="submit">Update Post</button>
-        </form>
-        <p style="text-align:center;"><a href="/">Back to Feed</a></p>
+        <!-- Edit Post Form -->
+        <div class="post-form">
+            <form action="/posts/<%= post.id %>?_method=PUT" method="POST">
+                <input type="text" name="title" value="<%= post.title %>" required>
+                <textarea name="content" required><%= post.content %></textarea>
+                <button type="submit">Update Post</button>
+            </form>
+        </div>
+
+        <p style="text-align:center; margin-top:10px;">
+            <a href="/">Back to Feed</a>
+        </p>
     </div>
 </body>
 </html>
+
 
